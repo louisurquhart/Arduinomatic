@@ -1,0 +1,17 @@
+# Frontend
+node_modules/
+dist/
+
+# Backend
+target/
+*.jar
+
+
+# IDE/System Files
+.idea/
+*.iml
+.vscode/
+.DS_Store
+
+# Secrets
+.env
