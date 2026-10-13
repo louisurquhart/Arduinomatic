@@ -2,11 +2,13 @@ package com.example.demo.model;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
+
 @Entity
-@Table(name = "sensor_readings") // Swapped hyphen for underscore (standard for SQL tables)
+@Table(name = "sensor_readings")
 public class SensorReading {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Added auto-generation
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     // Many Sensor Readings belong to One Device
@@ -14,6 +16,19 @@ public class SensorReading {
     @JoinColumn(name = "device_id", nullable = false)
     private Device device;
 
-    // TODO: Add variables for the actual sensor data (e.g., temperature, humidity)
-    // private Double temperature;
+    // Time of reading
+    @Column(nullable = false)
+    private LocalDateTime timestamp;
+
+    // Sensor type
+    @Column(nullable = false)
+    private String sensorType;
+
+    // Actual value of sensor
+    @Column(nullable = false)
+    private Double value;
+
+    // Unit (maybe)
+    private String unit;
+
 }
